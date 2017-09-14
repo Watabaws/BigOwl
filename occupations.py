@@ -7,16 +7,18 @@ HW#03: StI/O: Divine your Destiny!
 2017-09-15
 '''
 
-cool_file = open("occupations.csv", "r")
-cool_list = cool_file.readlines()
+cool_file = open("occupations.csv", "r") #Open up our csv file so we can get to working on it
+cool_list = cool_file.readlines() #Read the file in a way that each line is a list item
+cool_file.close()
 #print coolList
-cool_dic = {}
-i = 1
+cool_dic = {} #Close up the file
+i = 1 #this is going to be the index of our list!!
 
 while (i<len(cool_list)):
-     comma = cool_list[i].rfind(",", 0, len(cool_list[i]))
-     cool_dic[cool_list[i][:comma]] = cool_list[i][comma + 1:len(cool_list[i]) - 1]
-     i += 1
+     thisLine = cool_list[i] #Let's grab the current line
+     comma = thisLine.rfind(",") #Let's also find the right comma - the one that seperates the number and value
+     cool_dic[thisLine[:comma]] = thisLine[comma + 1:].strip('\n') #Add the stuff before the comma (occupation) to the dictionary as a key, then add the stuff after the comma as a value!
+     i += 1 #Wouldn't want an infinite loop now would we
 
 #print(cool_dic)
 
