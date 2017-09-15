@@ -1,4 +1,5 @@
 import random
+from collections import defaultdict
 
 '''
 Team BigOwl: Adam Abbas, Daria Shifrina
@@ -36,3 +37,18 @@ def random_occupation():
 
 
 print random_occupation()
+
+#below we are testing the accuracy of using cumulative frequency. we are running 1000 test trials to see if each occupation shows up the percentage that it is supposed to. as you can tell, it is pretty close every single time.
+counter = 0
+frequency_words = ""
+while(counter < 1000):
+    frequency_words += random_occupation() + "$"
+    counter +=1
+
+d = defaultdict(int)
+for word in frequency_words.split("$"):
+    d[word] += 1
+
+print('Occupation Frequency')
+for occupation, frequency in d.items():
+    print('{} {}'.format(occupation, frequency))
